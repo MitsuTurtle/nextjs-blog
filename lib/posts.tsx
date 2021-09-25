@@ -1,8 +1,14 @@
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
+import path from 'path';
 import remark from 'remark';
 import html from 'remark-html';
+
+type PostsData = {
+  id: string;
+  title: string;
+  date: string;
+};
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -27,7 +33,8 @@ export function getSortedPostsData() {
     };
   });
   // Sort posts by date
-  return allPostsData.sort(({ date: a }, { date: b }) => {
+  console.log(allPostsData);
+  return allPostsData.sort(({ date: a }: PostsData, { date: b }: PostsData) => {
     if (a < b) {
       return 1;
     } else if (a > b) {

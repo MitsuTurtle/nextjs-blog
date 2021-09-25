@@ -4,10 +4,15 @@ import Link from 'next/link';
 import utilStyles from '../styles/utils.module.css';
 import styles from './layout.module.css';
 
+type Props = {
+  children?: React.ReactNode;
+  home?: boolean;
+};
+
 const name = 'Kametaro';
 export const siteTitle = 'Next.js Kametaro';
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home }: Props) {
   return (
     <div className={styles.container}>
       <Head>
